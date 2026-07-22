@@ -54,4 +54,22 @@ with tab2:
             st.markdown("#### 🌳 Family Tree Web App")
             st.write("เว็บแอปพลิเคชันสร้างและแสดงแผนผังครอบครัว พัฒนาด้วย React เพื่อจัดการความสัมพันธ์และประวัติข้อมูลของสมาชิกในครอบครัวได้อย่างง่ายดายและสวยงาม")
 
-    
+    with game_col1:
+        with st.container(border=True):
+            st.markdown("#### The Game of Rock Paper Scissors")
+            choices = ["Rock", "Paper", "Scissors"]
+            user_choice = st.radio("choose your weapon:", choices, horizontal=True)
+
+            if st.button("The Game of Rock Paper Scissors"):
+                bot_choice = random.choice(choices)
+
+                st.write(f"I choose: **{bot_choice}**")
+
+                if user_choice == bot_choice:
+                    st.info("We tied")
+                elif (user_choice == "Rock" and bot_choice == "Scissors") or \
+                     (user_choice == "Scissors" and bot_choice == "Paper") or \
+                     (user_choice == "Paper" and bot_choice == "Rock"):
+                    st.success("You Win!!")
+                else:
+                    st.error("You lost! try again")
