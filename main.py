@@ -7,7 +7,7 @@ with col1:
     st.image("yuaan.jpg")
 with col2:
     st.title("Sippawit Aroonlarp (Yuaan)")
-    st.subheader("Full Stack Developer & Game Designer")
+    st.subheader("educator")
     st.write("Yuaan is tuff")
 
 
@@ -17,13 +17,13 @@ tab1,tab2,tab3,tab4 = st.tabs(["Experience & Education", "Projects & Skills", "M
 
 with tab1:
     st.markdown("Experience in working")
-    st.write("- ** 2026 : Present: ** Software developer, Front End")
-    st.write("- teacher and sharinbg simple program education (Roblox studio / lua), scratch, Thunkable, Blocky, C#, C#, C++, Python")
+    st.write("- ** 2026 : Present: ** educator, secondary education years")
+    st.write("- student and sharinbg simple program education (Roblox studio / lua), scratch, Thunkable, Blocky, C#, C#, C++, Python")
 
 
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("### Education")
-    st.write("-2032 - 2036:** Computer Engineering, University of Oxford")
+    st.write("-2020 - 2026:** educating, SISB SCHOOLS")
 
 # --- แท็บที่ 2: โปรเจกต์และทักษะ ---
 with tab2:
