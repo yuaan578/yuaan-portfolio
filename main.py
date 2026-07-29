@@ -73,3 +73,32 @@ with tab2:
                     st.success("You Win!!")
                 else:
                     st.error("You lost! try again")
+
+
+    with game_col2:
+        with st.container(border=True):
+            st.markdown("The number guessing game(1-50)")
+
+
+            if "target_num" not in st.session_state:
+                st.session_state.target_num = random.randint(1, 50)
+                st.session_state.attempts = 0
+
+            guess = st.number_input("Insert your gueesed number:", min_value=1, max_value=50, steps=1)
+
+            col_btn1, col_btn2 = st.columns([1,1])
+            with col_btn1:
+                if st.button("Guess the number!"):
+                    st.session_state.attempts += 1
+                    if guess < st.session_state.target_num:
+                        st.warning(f"Attempt {st.session_state.attempts}: is too low")
+                    elif guess > st.session_state.target_num:
+                        st.warning(f"Attempt {st.session_state.attempts}: is too high")
+                    else:
+                        st.success(f"Correct the answer is {st.session_state.target_num} (You guessed {st.session_state.attempts} times)")
+                        st.balloons()
+            with col_btn2:
+                if st.button("restart the game"):
+                    st.session_state.target_num = random.randint(1, 50)
+                    st.session_state.attempts = 0
+                    st.info("The game has been reseted! You may take you guess")
