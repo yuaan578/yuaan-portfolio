@@ -31,29 +31,28 @@ with tab2:
     st.write("**Programming & Tech:** Python, React, Firebase, Vercel, n8n, Scratch")
     st.write("**Interests:** Web Development, Data Automation, Photography (Canon EOS R50)")
 
-    st.markdown("### 🌟 ผลงานเด่น (Projects)")
+    st.markdown("### 🌟 ผลงานเด่น")
     
     col_p1, col_p2 = st.columns(2)
     with col_p1:
         with st.container(border=True):
-            st.markdown("#### 💰 WealthFlow Web App")
-            st.write("พัฒนาเว็บไซต์สำหรับบันทึกรายรับ-รายจ่าย และติดตามพอร์ตการลงทุนส่วนตัว โดยใช้ React และเชื่อมต่อฐานข้อมูลด้วย Firebase เพื่อการจัดการการเงินอย่างเป็นระบบ")
+            st.markdown("Can speak Three Languages!!!")
+            st.write("Thai , chinese, and english")
     with col_p2:
         with st.container(border=True):
-            st.markdown("#### 🤖 Data Automation System")
-            st.write("สร้างระบบประมวลผลข้อมูลอัตโนมัติด้วย n8n (ตั้งค่า MQTT nodes) ร่วมกับ Scratch เพื่อดึงและบันทึกข้อมูลทางการเงินลงใน Google Sheets อัตโนมัติ")
+            st.markdown("Math level")
+            st.write("Math Kumon level J equivilent to Year 10")
             
     # เพิ่มโปรเจกต์ใหม่ที่นี่
     col_p3, col_p4 = st.columns(2)
     with col_p3:
         with st.container(border=True):
-            st.markdown("#### ✈️ Travel Diary Web App")
-            st.write("เว็บแอปพลิเคชันสำหรับบันทึกเรื่องราวและไดอารี่การท่องเที่ยว พัฒนาด้วย React ช่วยให้เก็บความทรงจำ สถานที่ และรูปภาพได้อย่างเป็นระเบียบ")
+            st.markdown("Robox studio obby games")
+            st.write("A roblox obby game with high competition to complete")
     with col_p4:
         with st.container(border=True):
-            st.markdown("#### 🌳 Family Tree Web App")
-            st.write("เว็บแอปพลิเคชันสร้างและแสดงแผนผังครอบครัว พัฒนาด้วย React เพื่อจัดการความสัมพันธ์และประวัติข้อมูลของสมาชิกในครอบครัวได้อย่างง่ายดายและสวยงาม")
-
+            st.markdown("Acing Thai language")
+            st.write("Getting A* in thai language over the years")
 
 # --- แท็บที่ 3: มินิเกม (Mini Games) ---
 with tab3:
