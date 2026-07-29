@@ -75,30 +75,59 @@ with tab2:
                     st.error("You lost! try again")
 
 
+# --- แท็บที่ 3: มินิเกม (Mini Games) ---
+with tab3:
+    st.markdown("### 🎮 มินิเกม Python สำหรับคลายเครียด")
+    st.write("ทดลองเล่นมินิเกมที่เขียนขึ้นด้วยภาษา Python และทำงานบน Streamlit ได้เลยครับ!")
+    
+    game_col1, game_col2 = st.columns(2)
+    
+    # เกมที่ 1: เป่ายิ้งฉุบ
+    with game_col1:
+        with st.container(border=True):
+            st.markdown("#### ✌️✊✋ เกมเป่ายิ้งฉุบ")
+            choices = ["ค้อน ✊", "กรรไกร ✌️", "กระดาษ ✋"]
+            user_choice = st.radio("เลือกอาวุธของคุณ:", choices, horizontal=True)
+            
+            if st.button("เป่ายิ้งฉุบ!"):
+                bot_choice = random.choice(choices)
+                
+                st.write(f"🤖 บอทเลือก: **{bot_choice}**")
+                
+                if user_choice == bot_choice:
+                    st.info("เสมอ! ใจตรงกันเลย 😲")
+                elif (user_choice == "ค้อน ✊" and bot_choice == "กรรไกร ✌️") or \
+                     (user_choice == "กรรไกร ✌️" and bot_choice == "กระดาษ ✋") or \
+                     (user_choice == "กระดาษ ✋" and bot_choice == "ค้อน ✊"):
+                    st.success("คุณชนะ! 🎉")
+                else:
+                    st.error("คุณแพ้! ลองใหม่นะ 😭")
+
+    # เกมที่ 2: ทายตัวเลข
     with game_col2:
         with st.container(border=True):
-            st.markdown("The number guessing game(1-50)")
-
-
-            if "target_num" not in st.session_state:
+            st.markdown("#### 🔢 เกมทายใจตัวเลข (1-50)")
+            
+            # ใช้ session_state เพื่อเก็บค่าตัวเลขเป้าหมายไม่ให้เปลี่ยนทุกครั้งที่กดปุ่ม
+            if 'target_num' not in st.session_state:
                 st.session_state.target_num = random.randint(1, 50)
                 st.session_state.attempts = 0
 
-            guess = st.number_input("Insert your gueesed number:", min_value=1, max_value=50, steps=1)
-
-            col_btn1, col_btn2 = st.columns([1,1])
+            guess = st.number_input("ใส่ตัวเลขที่ทาย:", min_value=1, max_value=50, step=1)
+            
+            col_btn1, col_btn2 = st.columns([1, 1])
             with col_btn1:
-                if st.button("Guess the number!"):
+                if st.button("ทายตัวเลข!"):
                     st.session_state.attempts += 1
                     if guess < st.session_state.target_num:
-                        st.warning(f"Attempt {st.session_state.attempts}: is too low")
+                        st.warning(f"ครั้งที่ {st.session_state.attempts}: น้อยไปครับ! 🔼")
                     elif guess > st.session_state.target_num:
-                        st.warning(f"Attempt {st.session_state.attempts}: is too high")
+                        st.warning(f"ครั้งที่ {st.session_state.attempts}: มากไปครับ! 🔽")
                     else:
-                        st.success(f"Correct the answer is {st.session_state.target_num} (You guessed {st.session_state.attempts} times)")
-                        st.balloons()
+                        st.success(f"🎉 ถูกต้อง! คำตอบคือ {st.session_state.target_num} (คุณทายไป {st.session_state.attempts} ครั้ง)")
+                        st.balloons() # เอฟเฟกต์ลูกโป่งตอนชนะ
             with col_btn2:
-                if st.button("restart the game"):
+                if st.button("เริ่มเกมใหม่ 🔄"):
                     st.session_state.target_num = random.randint(1, 50)
                     st.session_state.attempts = 0
-                    st.info("The game has been reseted! You may take you guess")
+                    st.info("รีเซ็ตเกมเรียบร้อย! เริ่มทายใหม่ได้เลย")
