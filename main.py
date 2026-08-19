@@ -1,10 +1,25 @@
 import streamlit as st
 import random
+import requests
+from streamlit_option_menu import option_menu
+from streamlit_lottie import st_lottie
+
+def load_lottieurl(url):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
 
 st.set_page_config(page_title="Portfolio | SIPPAWIT AROONLARP", page_icon="👌", layout="wide")
+lottie_coding = load_lottieurl("https://lottie.host/8061df43-1698-4c91-a185-181514736f1c/J77626tI7y.json")
 col1, col2 = st.columns([1, 2.5]) 
 with col1:
-    st.image("yuaan.jpg")
+    if lottie_coding:
+        st_lottie(lottie_coding, height=220, key="coding")
+    else:
+        st.image("yuaan.jpg")
 with col2:
     st.title("Sippawit Aroonlarp (Yuaan)")
     st.subheader("Educator")
@@ -13,9 +28,22 @@ with col2:
 
 st.divider()
 
-tab1,tab2,tab3,tab4 = st.tabs(["Experience & Education", "Projects & Skills", "Minigames", "Job"])
+selected = option_menu(
+    menu_title=None,
+    options=["Experience & Education", "Projects & Skills", "Minigames"],
+    icons=["briefcase", "rocket", "controller", "envelope"],
+    menu_icon="cast",
+    default_index=0,
+    orientation="horizontal",
+    styles={
+        "container": {"padding": "0!important", "background-color": "transparent"},
+        "icon": {"color": "#ffaa00", "font-size": "20px"}, 
+        "nav-link": {"font-size": "16px", "text-align": "center", "margin": "0px", "--hover-color": "#333333"},
+        "nav-link-selected": {"background-color": "#ca2a37"},
+    }
+)
 
-with tab1:
+if selected == "Experience & Education":
     st.markdown("Experience in working")
     st.write("- ** 2026 : Present: ** educator, secondary education years")
     st.write("- student and sharing simple program education (Roblox studio / lua), scratch, Thunkable, Blocky, C#, C#, C++, Python")
@@ -26,7 +54,7 @@ with tab1:
     st.write("-2020 - 2026:** educating, SISB SCHOOLS")
 
 # --- แท็บที่ 2: โปรเจกต์และทักษะ ---
-with tab2:
+if selected == "Projects & Skills":
     st.markdown("### 🛠️ ทักษะ (Skills)")
     st.write("**Programming & Tech:** Python, React, Firebase, Vercel, n8n, Scratch")
     st.write("**Interests:** Web Development, Data Automation, Photography (Canon EOS R50)")
@@ -55,7 +83,7 @@ with tab2:
             st.write("Getting A* in thai language over the years")
 
 # --- แท็บที่ 3: มินิเกม (Mini Games) ---
-with tab3:
+if selected == "Minigames":
     st.markdown("### 🎮 มินิเกม Python สำหรับคลายเครียด")
     st.write("ทดลองเล่นมินิเกมที่เขียนขึ้นด้วยภาษา Python และทำงานบน Streamlit ได้เลยครับ!")
     
