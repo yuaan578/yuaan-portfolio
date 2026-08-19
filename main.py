@@ -10,10 +10,9 @@ def load_lottieurl(url):
         return None
     return r.json()
 
-
-
 st.set_page_config(page_title="Portfolio | SIPPAWIT AROONLARP", page_icon="👌", layout="wide")
 lottie_coding = load_lottieurl("https://lottie.host/8061df43-1698-4c91-a185-181514736f1c/J77626tI7y.json")
+
 col1, col2 = st.columns([1, 2.5]) 
 with col1:
     if lottie_coding:
@@ -25,13 +24,12 @@ with col2:
     st.subheader("Educator")
     st.write("Yuaan is tuff")
 
-
 st.divider()
 
 selected = option_menu(
     menu_title=None,
     options=["Experience & Education", "Projects & Skills", "Minigames"],
-    icons=["briefcase", "rocket", "controller", "envelope"],
+    icons=["briefcase", "rocket", "controller"], # ลบ "envelope" ออกเพราะตอนนี้มีแค่ 3 เมนู
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
@@ -43,15 +41,15 @@ selected = option_menu(
     }
 )
 
+# --- แท็บที่ 1: ประวัติ ---
 if selected == "Experience & Education":
-    st.markdown("Experience in working")
+    st.markdown("### Experience in working")
     st.write("- ** 2026 : Present: ** educator, secondary education years")
     st.write("- student and sharing simple program education (Roblox studio / lua), scratch, Thunkable, Blocky, C#, C#, C++, Python")
 
-
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("### Education")
-    st.write("-2020 - 2026:** educating, SISB SCHOOLS")
+    st.write("- **2020 - 2026:** educating, SISB SCHOOLS")
 
 # --- แท็บที่ 2: โปรเจกต์และทักษะ ---
 if selected == "Projects & Skills":
@@ -64,56 +62,55 @@ if selected == "Projects & Skills":
     col_p1, col_p2 = st.columns(2)
     with col_p1:
         with st.container(border=True):
-            st.markdown("Can speak Three Languages!!!")
-            st.write("Thai , chinese, and english")
+            st.markdown("#### Can speak Three Languages!!!")
+            st.write("Thai, chinese, and english")
     with col_p2:
         with st.container(border=True):
-            st.markdown("Math level")
+            st.markdown("#### Math level")
             st.write("Math Kumon level J equivilent to Year 10")
             
-    # เพิ่มโปรเจกต์ใหม่ที่นี่
     col_p3, col_p4 = st.columns(2)
     with col_p3:
         with st.container(border=True):
-            st.markdown("Robox studio obby games")
+            st.markdown("#### Robox studio obby games")
             st.write("A roblox obby game with high competition to complete")
     with col_p4:
         with st.container(border=True):
-            st.markdown("Acing Thai language")
+            st.markdown("#### Acing Thai language")
             st.write("Getting A* in thai language over the years")
 
 # --- แท็บที่ 3: มินิเกม (Mini Games) ---
 if selected == "Minigames":
-    st.markdown("### 🎮 มินิเกม Python สำหรับคลายเครียด")
-    st.write("ทดลองเล่นมินิเกมที่เขียนขึ้นด้วยภาษา Python และทำงานบน Streamlit ได้เลยครับ!")
+    st.markdown("### 🎮 python minigames")
+    st.write("try the minigames written with python on streamlit")
     
     game_col1, game_col2 = st.columns(2)
     
     # เกมที่ 1: เป่ายิ้งฉุบ
     with game_col1:
         with st.container(border=True):
-            st.markdown("#### ✌️✊✋ เกมเป่ายิ้งฉุบ")
-            choices = ["ค้อน ✊", "กรรไกร ✌️", "กระดาษ ✋"]
+            st.markdown("#### ✌️✊✋ rock")
+            choices = ["rock ✊", "scissor ✌️", "paper ✋"]
             user_choice = st.radio("เลือกอาวุธของคุณ:", choices, horizontal=True)
             
             if st.button("เป่ายิ้งฉุบ!"):
                 bot_choice = random.choice(choices)
                 
-                st.write(f"🤖 บอทเลือก: **{bot_choice}**")
+                st.write(f"🤖 bot chooses: **{bot_choice}**")
                 
                 if user_choice == bot_choice:
-                    st.info("เสมอ! ใจตรงกันเลย 😲")
-                elif (user_choice == "ค้อน ✊" and bot_choice == "กรรไกร ✌️") or \
-                     (user_choice == "กรรไกร ✌️" and bot_choice == "กระดาษ ✋") or \
-                     (user_choice == "กระดาษ ✋" and bot_choice == "ค้อน ✊"):
-                    st.success("คุณชนะ! 🎉")
+                    st.info("oh we made the same choice 😲")
+                elif (user_choice == "rock ✊" and bot_choice == "scissor ✌️") or \
+                     (user_choice == "scissor ✌️" and bot_choice == "paper ✋") or \
+                     (user_choice == "paper ✋" and bot_choice == "rock ✊"):
+                    st.success("You win! 🎉")
                 else:
-                    st.error("คุณแพ้! ลองใหม่นะ 😭")
+                    st.error("You lost! try again next time 😭")
 
     # เกมที่ 2: ทายตัวเลข
     with game_col2:
         with st.container(border=True):
-            st.markdown("#### 🔢 เกมทายใจตัวเลข (1-50)")
+            st.markdown("#### 🔢 guessing number game (1-50)")
             
             # ใช้ session_state เพื่อเก็บค่าตัวเลขเป้าหมายไม่ให้เปลี่ยนทุกครั้งที่กดปุ่ม
             if 'target_num' not in st.session_state:
@@ -131,10 +128,10 @@ if selected == "Minigames":
                     elif guess > st.session_state.target_num:
                         st.warning(f"ครั้งที่ {st.session_state.attempts}: มากไปครับ! 🔽")
                     else:
-                        st.success(f"🎉 ถูกต้อง! คำตอบคือ {st.session_state.target_num} (คุณทายไป {st.session_state.attempts} ครั้ง)")
+                        st.success(f"🎉 correct the answer is {st.session_state.target_num} (you took  {st.session_state.attempts} attempts)")
                         st.balloons() # เอฟเฟกต์ลูกโป่งตอนชนะ
             with col_btn2:
-                if st.button("เริ่มเกมใหม่ 🔄"):
+                if st.button("new game 🔄"):
                     st.session_state.target_num = random.randint(1, 50)
                     st.session_state.attempts = 0
-                    st.info("รีเซ็ตเกมเรียบร้อย! เริ่มทายใหม่ได้เลย")
+                    st.info("A new game has started you may procced")
